@@ -13,10 +13,7 @@ import Box from '@mui/material/Box';
 
 // project imports
 import navigation from 'menu-items';
-
-import AccountTreeTwoToneIcon from '@mui/icons-material/AccountTreeTwoTone';
-import HomeIcon from '@mui/icons-material/Home';
-import HomeTwoToneIcon from '@mui/icons-material/HomeTwoTone';
+import RemixIcon from 'ui-component/RemixIcon';
 
 // ==============================|| BREADCRUMBS TITLE ||============================== //
 
@@ -56,7 +53,7 @@ export default function Breadcrumbs({
     marginTop: -2,
     width: '1rem',
     height: '1rem',
-    color: theme.vars.palette.secondary.main
+    color: theme.palette.secondary.main
   };
 
   const linkSX = {
@@ -105,21 +102,18 @@ export default function Breadcrumbs({
 
   // item separator - 使用 remixicon
   const separatorIcon = separator ? (
-    <Box className={separator} sx={{ fontSize: '16px', ml: 1.25, mr: 1.25 }} />
+    <RemixIcon icon={separator} size={16} sx={{ ml: 1.25, mr: 1.25 }} />
   ) : (
-    <Box className="ri-arrow-right-s-line" sx={{ fontSize: '16px' }} />
+    <RemixIcon icon="ri-arrow-right-s-line" size={16} />
   );
 
   let mainContent;
   let itemContent;
   let breadcrumbContent = <Typography />;
   let itemTitle = '';
-  let CollapseIcon: any;
-  let ItemIcon: any;
 
   // collapse item
   if (main && main.type === 'collapse') {
-    CollapseIcon = main.icon ? main.icon : AccountTreeTwoToneIcon;
     mainContent = (
       <Typography
         {...(main.url && { component: Link, to: main.url })}
@@ -136,9 +130,9 @@ export default function Breadcrumbs({
         color={window.location.pathname === main.url ? 'text.primary' : 'text.secondary'}
       >
         {icons && typeof main.icon === 'string' ? (
-          <Box className={main.icon} style={{ ...iconSX }} />
-        ) : icons ? (
-          <CollapseIcon style={{ ...iconSX }} />
+          <RemixIcon icon={main.icon} size={16} sx={iconSX} />
+        ) : icons && main.icon ? (
+          <RemixIcon icon="ri-node-tree" size={16} sx={iconSX} />
         ) : null}
         {main.title}
       </Typography>
@@ -164,8 +158,8 @@ export default function Breadcrumbs({
                 sx={{ '& .MuiBreadcrumbs-separator': { width: 16, ml: 1.25, mr: 1.25 } }}
               >
                 <Typography component={Link} to="/" variant="h6" sx={{ ...linkSX, color: 'text.secondary' }}>
-                  {icons && <HomeTwoToneIcon style={iconSX} />}
-                  {icon && !icons && <HomeIcon style={{ ...iconSX, marginRight: 0 }} />}
+                  {icons && <RemixIcon icon="ri-home-4-line" size={16} sx={iconSX} />}
+                  {icon && !icons && <RemixIcon icon="ri-home-line" size={16} sx={{ ...iconSX, mr: 0 }} />}
                   {(!icon || icons) && 'Dashboard'}
                 </Typography>
                 {mainContent}
@@ -183,7 +177,6 @@ export default function Breadcrumbs({
   if ((item && item.type === 'item') || (item?.type === 'group' && item?.url) || custom) {
     itemTitle = item?.title || '';
 
-    ItemIcon = item?.icon ? item.icon : AccountTreeTwoToneIcon;
     itemContent = (
       <Typography
         variant="h6"
@@ -200,9 +193,9 @@ export default function Breadcrumbs({
         }}
       >
         {icons && typeof item?.icon === 'string' ? (
-          <Box className={item.icon} style={{ ...iconSX }} />
-        ) : icons ? (
-          <ItemIcon style={{ ...iconSX }} />
+          <RemixIcon icon={item.icon} size={16} sx={iconSX} />
+        ) : icons && item?.icon ? (
+          <RemixIcon icon="ri-node-tree" size={16} sx={iconSX} />
         ) : null}
         {itemTitle}
       </Typography>
@@ -216,8 +209,8 @@ export default function Breadcrumbs({
         sx={{ '& .MuiBreadcrumbs-separator': { width: 16, mx: 0.75 } }}
       >
         <Typography component={Link} to="/" variant="h6" sx={{ ...linkSX, color: 'text.secondary' }}>
-          {icons && <HomeTwoToneIcon style={iconSX} />}
-          {icon && !icons && <HomeIcon style={{ ...iconSX, marginRight: 0 }} />}
+          {icons && <RemixIcon icon="ri-home-4-line" size={16} sx={iconSX} />}
+          {icon && !icons && <RemixIcon icon="ri-home-line" size={16} sx={{ ...iconSX, mr: 0 }} />}
           {(!icon || icons) && 'Dashboard'}
         </Typography>
         {mainContent}
@@ -234,8 +227,6 @@ export default function Breadcrumbs({
           sx={{ '& .MuiBreadcrumbs-separator': { width: 16, ml: 1.25, mr: 1.25 } }}
         >
           {links?.map((link, index) => {
-            CollapseIcon = link.icon ? link.icon : AccountTreeTwoToneIcon;
-
             return (
               <Typography
                 key={index}
@@ -244,9 +235,9 @@ export default function Breadcrumbs({
                 sx={{ ...linkSX, color: 'text.secondary' }}
               >
                 {link.icon && typeof link.icon === 'string' ? (
-                  <Box className={link.icon} style={iconSX} />
+                  <RemixIcon icon={link.icon} size={16} sx={iconSX} />
                 ) : link.icon ? (
-                  <CollapseIcon style={iconSX} />
+                  <RemixIcon icon="ri-node-tree" size={16} sx={iconSX} />
                 ) : null}
                 {link.title}
               </Typography>

@@ -5,9 +5,9 @@ import Chip from '@mui/material/Chip';
 import Drawer from '@mui/material/Drawer';
 import Stack from '@mui/material/Stack';
 import Box from '@mui/material/Box';
+import { useTheme } from '@mui/material/styles';
 
 // project imports
-import MenuCard from './MenuCard';
 import MenuList from '../MenuList';
 import LogoSection from '../LogoSection';
 import MiniDrawerStyled from './MiniDrawerStyled';
@@ -21,7 +21,8 @@ import { handlerDrawerOpen, useGetMenuMaster } from 'api/menu';
 // ==============================|| SIDEBAR DRAWER ||============================== //
 
 function Sidebar() {
-  const downMD = useMediaQuery((theme) => theme.breakpoints.down('md'));
+  const theme = useTheme();
+  const downMD = useMediaQuery(theme.breakpoints.down('md'));
 
   const { menuMaster } = useGetMenuMaster();
   const drawerOpen = menuMaster.isDashboardDrawerOpened;
@@ -33,39 +34,36 @@ function Sidebar() {
   const logo = useMemo(
     () => (
       <Box sx={{ display: 'flex', p: 2 }}>
-        <LogoSection />
+        <LogoSection drawerOpen={drawerOpen} />
       </Box>
     ),
-    []
+    [drawerOpen]
   );
 
   const drawer = useMemo(() => {
     const drawerContent = (
-      <>
-        <MenuCard />
-        <Stack direction="row" sx={{ justifyContent: 'center', mb: 2 }}>
-          <Chip label={import.meta.env.VITE_APP_VERSION} size="small" color="default" />
-        </Stack>
-      </>
+      <Stack direction="row" sx={{ justifyContent: 'center', mb: 2 }}>
+        <Chip label={import.meta.env.VITE_APP_VERSION} size="small" color="default" />
+      </Stack>
     );
 
     let drawerSX = { paddingLeft: '0px', paddingRight: '0px', marginTop: '20px' };
     if (drawerOpen) drawerSX = { paddingLeft: '16px', paddingRight: '16px', marginTop: '0px' };
 
+    if (downMD) {
+      return (
+        <Box sx={drawerSX}>
+          <MenuList />
+          {drawerOpen && drawerContent}
+        </Box>
+      );
+    }
+
     return (
-      <>
-        {downMD ? (
-          <Box sx={drawerSX}>
-            <MenuList />
-            {drawerOpen && drawerContent}
-          </Box>
-        ) : (
-          <SimpleBar sx={{ height: 'calc(100vh - 90px)', ...drawerSX }}>
-            <MenuList />
-            {drawerOpen && drawerContent}
-          </SimpleBar>
-        )}
-      </>
+      <SimpleBar sx={{ height: 'calc(100vh - 90px)', ...drawerSX }}>
+        <MenuList />
+        {drawerOpen && drawerContent}
+      </SimpleBar>
     );
   }, [downMD, drawerOpen]);
 
@@ -81,7 +79,7 @@ function Sidebar() {
             paper: {
               sx: {
                 mt: downMD ? 0 : 11,
-                zIndex: 1099,
+                zIndex: theme.zIndex.drawer,
                 width: drawerWidth,
                 bgcolor: 'background.default',
                 color: 'text.primary',
@@ -91,6 +89,9 @@ function Sidebar() {
           }}
           ModalProps={{ keepMounted: true }}
           color="inherit"
+          sx={{
+            zIndex: theme.zIndex.drawer,
+          }}
         >
           {downMD && logo}
           {drawer}

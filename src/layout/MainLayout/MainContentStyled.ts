@@ -14,7 +14,7 @@ interface MainContentStyledProps {
 const MainContentStyled = styled('main', {
   shouldForwardProp: (prop) => prop !== 'open' && prop !== 'borderRadius'
 })<MainContentStyledProps>(({ theme, open, borderRadius }) => ({
-  backgroundColor: theme.vars.palette.grey[100],
+  backgroundColor: theme.palette.background.default,
   minWidth: '1%',
   width: '100%',
   minHeight: 'calc(100vh - 88px)',
@@ -58,7 +58,8 @@ const MainContentStyled = styled('main', {
   },
   [theme.breakpoints.down('sm')]: {
     marginLeft: 10,
-    marginRight: 10
+    marginRight: 10,
+    padding: 12
   }
 }));
 

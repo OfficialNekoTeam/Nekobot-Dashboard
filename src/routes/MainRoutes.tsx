@@ -23,9 +23,19 @@ const PersonalitiesPage = Loadable(lazy(() => import('views/personalities')));
 const SystemPromptsPage = Loadable(lazy(() => import('views/system-prompts')));
 const ToolPromptsPage = Loadable(lazy(() => import('views/tool-prompts')));
 
+// advanced routing
+const AgentsPage = Loadable(lazy(() => import('views/agents')));
+const PipelinesPage = Loadable(lazy(() => import('views/pipelines')));
+const ConversationsPage = Loadable(lazy(() => import('views/conversations')));
+const LongTermMemoryPage = Loadable(lazy(() => import('views/long-term-memory')));
+const BackupsPage = Loadable(lazy(() => import('views/backups')));
+
 // system routing
+const ToolsPage = Loadable(lazy(() => import('views/tools')));
 const LogsPage = Loadable(lazy(() => import('views/logs')));
 const SettingsPage = Loadable(lazy(() => import('views/settings')));
+const ResetPasswordPage = Loadable(lazy(() => import('views/settings/reset-password')));
+const AboutPage = Loadable(lazy(() => import('views/about')));
 
 // ==============================|| MAIN ROUTING ||============================== //
 
@@ -82,12 +92,44 @@ const MainRoutes = {
       element: <ToolPromptsPage />
     },
     {
+      path: 'agents',
+      element: <AgentsPage />
+    },
+    {
+      path: 'pipelines',
+      element: <PipelinesPage />
+    },
+    {
+      path: 'conversations',
+      element: <ConversationsPage />
+    },
+    {
+      path: 'long-term-memory',
+      element: <LongTermMemoryPage />
+    },
+    {
+      path: 'backups',
+      element: <BackupsPage />
+    },
+    {
+      path: 'tools',
+      element: <ToolsPage />
+    },
+    {
       path: 'logs',
       element: <LogsPage />
     },
     {
       path: 'settings',
       element: <SettingsPage />
+    },
+    {
+      path: 'settings/reset-password',
+      element: <ResetPasswordPage />
+    },
+    {
+      path: 'about',
+      element: <AboutPage />
     }
   ]
 };

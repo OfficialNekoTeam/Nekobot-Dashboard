@@ -12,9 +12,7 @@ import Box from '@mui/material/Box';
 // project imports
 import MainCard from 'ui-component/cards/MainCard';
 import TotalIncomeCard from 'ui-component/cards/Skeleton/TotalIncomeCard';
-
-// assets
-import TableChartOutlinedIcon from '@mui/icons-material/TableChartOutlined';
+import RemixIcon from 'ui-component/RemixIcon';
 
 // styles
 const CardWrapper = styled(MainCard)(({ theme }) => ({
@@ -66,7 +64,7 @@ export default function TotalIncomeDarkCard({ isLoading }) {
                       color: 'common.white'
                     }}
                   >
-                    <TableChartOutlinedIcon fontSize="inherit" />
+                    <RemixIcon icon="ri-table-line" size="inherit" />
                   </Avatar>
                 </ListItemAvatar>
                 <ListItemText

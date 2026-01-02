@@ -23,12 +23,13 @@ export interface DashboardStats {
     total: number;
     by_platform: Array<{
       platform: string;
-      count: number;
+      messages: number;  // 后端使用 messages 字段
     }>;
   };
   user_activity?: {
     active_users: number;
-    total_sessions: number;
+    new_users?: number;
+    total_sessions?: number;  // 后端可能没有这个字段
   };
   resource_usage: {
     cpu_usage: number;

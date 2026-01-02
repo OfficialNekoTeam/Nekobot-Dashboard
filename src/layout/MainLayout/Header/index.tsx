@@ -9,6 +9,7 @@ import LogoSection from '../LogoSection';
 import SearchSection from './SearchSection';
 import ProfileSection from './ProfileSection';
 import NotificationSection from './NotificationSection';
+import ThemeSection from './ThemeSection';
 
 import { handlerDrawerOpen, useGetMenuMaster } from 'api/menu';
 
@@ -48,13 +49,17 @@ export default function Header() {
         </Avatar>
       </Box>
 
-      {/* header search */}
-      <SearchSection />
-      <Box sx={{ flexGrow: 1 }} />
+      {/* header search - centered */}
+      <Box sx={{ flexGrow: 1, display: 'flex', justifyContent: 'center' }}>
+        <SearchSection />
+      </Box>
       <Box sx={{ flexGrow: 1 }} />
 
       {/* notification */}
       <NotificationSection />
+
+      {/* theme toggle */}
+      <ThemeSection />
 
       {/* profile */}
       <ProfileSection />

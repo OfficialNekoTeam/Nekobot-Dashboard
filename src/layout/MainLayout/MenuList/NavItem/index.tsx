@@ -20,7 +20,7 @@ import { handlerDrawerOpen, useGetMenuMaster } from 'api/menu';
 import useConfig from 'hooks/useConfig';
 
 // assets
-import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
+import RemixIcon from 'ui-component/RemixIcon';
 
 export default function NavItem({ item, level, isParents = false, setSelectedID }: any) {
   const theme = useTheme();
@@ -51,15 +51,19 @@ export default function NavItem({ item, level, isParents = false, setSelectedID 
 
   // 使用 remixicon 图标
   const itemIcon = item?.icon ? (
-    <Box
+    <RemixIcon
+      icon={item.icon}
+      size={drawerOpen ? 20 : 24}
       sx={{
-        fontSize: drawerOpen ? '20px' : '24px',
-        ...((isParents || level !== 1) && { fontSize: '20px' }),
+        ...((isParents || level !== 1) && { fontSize: '20px !important' }),
       }}
-      className={item.icon}
     />
   ) : (
-    <FiberManualRecordIcon sx={{ width: isSelected ? 8 : 6, height: isSelected ? 8 : 6 }} fontSize={level > 0 ? 'inherit' : 'medium'} />
+    <RemixIcon
+      icon="ri-checkbox-blank-circle-fill"
+      size={isSelected ? 8 : 6}
+      sx={{ color: isSelected ? 'secondary.main' : 'text.primary' }}
+    />
   );
 
   let itemTarget = '_self';

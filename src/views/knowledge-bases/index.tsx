@@ -47,12 +47,8 @@ import {
 } from 'api';
 import type { KnowledgeBase, KnowledgeBaseStats, KnowledgeBaseDocument } from 'types/knowledge-base';
 
-// assets
-import RefreshIcon from '@mui/icons-material/Refresh';
-import AddIcon from '@mui/icons-material/Add';
-import DeleteIcon from '@mui/icons-material/Delete';
-import EditIcon from '@mui/icons-material/Edit';
-import DescriptionIcon from '@mui/icons-material/Description';
+// project imports
+import RemixIcon from 'ui-component/RemixIcon';
 
 // ==============================|| KNOWLEDGE BASES PAGE ||============================== //
 
@@ -156,10 +152,10 @@ export default function KnowledgeBasesPage() {
             知识库管理
           </Typography>
           <Stack direction="row" spacing={2}>
-            <Button variant="contained" startIcon={<AddIcon />} onClick={handleAdd}>
+            <Button variant="contained" startIcon={<RemixIcon icon="ri-add-line" size="small" />} onClick={handleAdd}>
               创建知识库
             </Button>
-            <Button variant="outlined" startIcon={<RefreshIcon />} onClick={loadKnowledgeBases}>
+            <Button variant="outlined" startIcon={<RemixIcon icon="ri-refresh-line" size="small" />} onClick={loadKnowledgeBases}>
               刷新
             </Button>
           </Stack>
@@ -185,7 +181,7 @@ export default function KnowledgeBasesPage() {
                       </Typography>
                       <Stack direction="row">
                         <IconButton size="small" onClick={(e) => { e.stopPropagation(); handleDelete(kb); }}>
-                          <DeleteIcon fontSize="small" />
+                          <RemixIcon icon="ri-delete-bin-line" size="small" />
                         </IconButton>
                       </Stack>
                     </Stack>

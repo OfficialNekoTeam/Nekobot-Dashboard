@@ -12,6 +12,14 @@ const system: MenuItem = {
   type: 'group',
   children: [
     {
+      id: 'tools',
+      title: '工具管理',
+      type: 'item',
+      url: '/tools',
+      icon: 'ri-tools-line',
+      breadcrumbs: true,
+    },
+    {
       id: 'logs',
       title: '日志查看',
       type: 'item',
@@ -25,6 +33,14 @@ const system: MenuItem = {
       type: 'item',
       url: '/settings',
       icon: 'ri-settings-3-line',
+      breadcrumbs: true,
+    },
+    {
+      id: 'about',
+      title: '关于',
+      type: 'item',
+      url: '/about',
+      icon: 'ri-information-line',
       breadcrumbs: true,
     },
   ],

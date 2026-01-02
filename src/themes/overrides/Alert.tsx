@@ -1,8 +1,6 @@
 // project imports
 import { withAlpha } from 'utils/colorUtils';
-
-// assets
-import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
+import RemixIcon from 'ui-component/RemixIcon';
 
 // ==============================|| OVERRIDES - ALERT ||============================== //
 
@@ -55,7 +53,7 @@ export default function Alert(theme) {
     MuiAlert: {
       defaultProps: {
         iconMapping: {
-          primary: <InfoOutlinedIcon sx={{ fontSize: 'inherit' }} />
+          primary: <RemixIcon icon="ri-information-line" size="inherit" sx={{ fontSize: 'inherit' }} />
         }
       },
       styleOverrides: {

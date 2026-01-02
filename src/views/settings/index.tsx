@@ -34,9 +34,7 @@ import type { VersionInfo } from 'types/stat';
 import type { BotVersion } from 'types/system';
 
 // assets
-import RefreshIcon from '@mui/icons-material/Refresh';
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import ErrorIcon from '@mui/icons-material/Error';
+import RemixIcon from 'ui-component/RemixIcon';
 
 // ==============================|| SETTINGS PAGE ||============================== //
 
@@ -161,7 +159,7 @@ export default function SettingsPage() {
           <Alert
             severity={message.type}
             onClose={() => setMessage(null)}
-            icon={message.type === 'success' ? <CheckCircleIcon /> : <ErrorIcon />}
+            icon={message.type === 'success' ? <RemixIcon icon="ri-checkbox-circle-fill" size={20} /> : <RemixIcon icon="ri-error-warning-fill" size={20} />}
           >
             {message.text}
           </Alert>
@@ -202,7 +200,7 @@ export default function SettingsPage() {
                     <Button
                       variant="outlined"
                       onClick={handleCheckUpdate}
-                      startIcon={updateChecking ? <CircularProgress size={16} /> : <RefreshIcon />}
+                      startIcon={updateChecking ? <CircularProgress size={16} /> : <RemixIcon icon="ri-refresh-line" size={18} />}
                       disabled={updateChecking}
                     >
                       检查更新
@@ -342,7 +340,7 @@ export default function SettingsPage() {
               服务管理
             </Typography>
             <Stack spacing={2}>
-              <Alert severity="warning" icon={<CheckCircleIcon />}>
+              <Alert severity="warning" icon={<RemixIcon icon="ri-checkbox-circle-fill" size={20} />}>
                 重启服务将断开所有连接，请谨慎操作
               </Alert>
               <Stack direction="row" spacing={2}>

@@ -108,10 +108,19 @@ export async function updatePluginConfig(
 /**
  * 从 URL 安装插件
  */
-export async function installPlugin(url: string, proxy?: string): Promise<ApiResponse<void>> {
-  const response = await apiClient.post<ApiResponse<void>>('/api/plugins/install', {
+export async function installPlugin(
+  url: string,
+  options?: {
+    proxy?: string;
+    useGitHubProxy?: boolean;
+    pipMirror?: string;
+  }
+): Promise<ApiResponse<{ plugin_name: string }>> {
+  const response = await apiClient.post<ApiResponse<{ plugin_name: string }>>('/api/plugins/install', {
     url,
-    proxy,
+    proxy: options?.proxy,
+    use_github_proxy: options?.useGitHubProxy ?? false,
+    pip_mirror: options?.pipMirror,
   });
   return response.data;
 }

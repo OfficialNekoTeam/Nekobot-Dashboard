@@ -22,8 +22,7 @@ import Box from '@mui/material/Box';
 
 // project imports
 import Logo from 'ui-component/Logo';
-
-import MenuIcon from '@mui/icons-material/Menu';
+import RemixIcon from 'ui-component/RemixIcon';
 
 function ElevationScroll({ children, window }) {
   const theme = useTheme();
@@ -78,7 +77,7 @@ export default function AppBar({ ...others }) {
             </Stack>
             <Box sx={{ display: { xs: 'block', sm: 'none' } }}>
               <IconButton color="inherit" onClick={drawerToggler(true)} size="large">
-                <MenuIcon />
+                <RemixIcon icon="ri-menu-line" size={24} />
               </IconButton>
               <Drawer anchor="top" open={drawerToggle} onClose={drawerToggler(false)}>
                 {drawerToggle && (

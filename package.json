@@ -1,6 +1,6 @@
 {
-  "name": "berry-typescript",
-  "version": "5.1.0",
+  "name": "Nekobot-Dashboard",
+  "version": "1.0.0",
   "private": true,
   "type": "module",
   "scripts": {
@@ -17,9 +17,7 @@
     "@fontsource/inter": "5.2.8",
     "@fontsource/poppins": "5.2.7",
     "@fontsource/roboto": "5.2.9",
-    "@mui/icons-material": "7.3.5",
     "@mui/material": "7.3.5",
-    "@tabler/icons-react": "3.35.0",
     "apexcharts": "5.3.6",
     "axios": "^1.13.2",
     "framer-motion": "12.23.25",

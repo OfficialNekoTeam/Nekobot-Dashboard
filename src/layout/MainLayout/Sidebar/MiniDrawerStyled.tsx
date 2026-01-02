@@ -9,7 +9,7 @@ function openedMixin(theme: any) {
   return {
     width: drawerWidth,
     borderRight: 'none',
-    zIndex: 1099,
+    zIndex: theme.zIndex.drawer,
     background: theme.vars.palette.background.default,
     overflowX: 'hidden' as const,
     boxShadow: 'none',
@@ -23,7 +23,7 @@ function openedMixin(theme: any) {
 function closedMixin(theme) {
   return {
     borderRight: 'none',
-    zIndex: 1099,
+    zIndex: theme.zIndex.drawer,
     background: theme.vars.palette.background.default,
     overflowX: 'hidden' as const,
     width: 72,

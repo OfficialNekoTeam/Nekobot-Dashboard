@@ -16,7 +16,7 @@ const management: MenuItem = {
       title: '插件管理',
       type: 'item',
       url: '/plugins',
-      icon: 'ri-puzzle-line',
+      icon: 'ri-apps-line',
       breadcrumbs: true,
     },
     {

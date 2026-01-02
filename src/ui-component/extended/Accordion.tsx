@@ -8,7 +8,7 @@ import MuiAccordionSummary from '@mui/material/AccordionSummary';
 import Box from '@mui/material/Box';
 
 // assets
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import RemixIcon from 'ui-component/RemixIcon';
 
 // ==============================|| ACCORDION ||============================== //
 
@@ -36,7 +36,7 @@ export default function Accordion({ data, defaultExpandedId = null, expandIcon, 
             onChange={handleChange(item.id)}
           >
             <MuiAccordionSummary
-              expandIcon={expandIcon || expandIcon === false ? expandIcon : <ExpandMoreIcon />}
+              expandIcon={expandIcon || expandIcon === false ? expandIcon : <RemixIcon icon="ri-arrow-down-s-line" size={24} />}
               sx={{ color: 'grey.600', fontWeight: 500 }}
             >
               {item.title}

@@ -42,10 +42,8 @@ import {
 } from 'api';
 import type { Command, CommandsResponse } from 'types/command';
 
-// assets
-import RefreshIcon from '@mui/icons-material/Refresh';
-import EditIcon from '@mui/icons-material/Edit';
-import WarningIcon from '@mui/icons-material/Warning';
+// project imports
+import RemixIcon from 'ui-component/RemixIcon';
 
 // ==============================|| COMMANDS PAGE ||============================== //
 
@@ -140,7 +138,7 @@ export default function CommandsPage() {
           <Typography variant="h3" sx={{ fontWeight: 600 }}>
             命令管理
           </Typography>
-          <Button variant="outlined" startIcon={<RefreshIcon />} onClick={loadCommands}>
+          <Button variant="outlined" startIcon={<RemixIcon icon="ri-refresh-line" size="small" />} onClick={loadCommands}>
             刷新
           </Button>
         </Stack>
@@ -173,7 +171,7 @@ export default function CommandsPage() {
             <Card sx={{ flex: 1, bgcolor: 'warning.light' }}>
               <CardContent>
                 <Stack direction="row" spacing={2} alignItems="center">
-                  <WarningIcon sx={{ color: 'warning.main' }} />
+                  <RemixIcon icon="ri-alarm-warning-fill" sx={{ color: 'warning.main' }} />
                   <Typography variant="h4" sx={{ color: 'warning.dark' }}>
                     {commandsData.summary.conflicts}
                   </Typography>
@@ -210,7 +208,7 @@ export default function CommandsPage() {
                             {cmd.effective_command}
                           </Typography>
                           {cmd.has_conflict && (
-                            <WarningIcon fontSize="small" sx={{ color: 'warning.main' }} />
+                            <RemixIcon icon="ri-alarm-warning-fill" size="small" sx={{ color: 'warning.main' }} />
                           )}
                         </Stack>
                       </TableCell>
@@ -266,7 +264,7 @@ export default function CommandsPage() {
                             {cmd.enabled ? '已启用' : '已禁用'}
                           </ToggleButton>
                           <IconButton size="small" onClick={() => handleRename(cmd)}>
-                            <EditIcon fontSize="small" />
+                            <RemixIcon icon="ri-edit-line" size="small" />
                           </IconButton>
                         </Stack>
                       </TableCell>

@@ -34,11 +34,8 @@ import {
 import { getPlatforms, addPlatform, updatePlatform, deletePlatform } from 'api';
 import type { Platform } from 'types/platform';
 
-// assets
-import RefreshIcon from '@mui/icons-material/Refresh';
-import AddIcon from '@mui/icons-material/Add';
-import DeleteIcon from '@mui/icons-material/Delete';
-import EditIcon from '@mui/icons-material/Edit';
+// project imports
+import RemixIcon from 'ui-component/RemixIcon';
 
 // ==============================|| PLATFORMS PAGE ||============================== //
 
@@ -155,10 +152,10 @@ export default function PlatformsPage() {
         <Stack direction="row" sx={{ alignItems: 'center', justifyContent: 'space-between' }}>
           <Typography variant="h3" sx={{ fontWeight: 600 }}>平台管理</Typography>
           <Stack direction="row" spacing={2}>
-            <Button variant="contained" startIcon={<AddIcon />} onClick={handleAdd}>
+            <Button variant="contained" startIcon={<RemixIcon icon="ri-add-line" size="small" />} onClick={handleAdd}>
               添加平台
             </Button>
-            <Button variant="outlined" startIcon={<RefreshIcon />} onClick={loadPlatforms}>
+            <Button variant="outlined" startIcon={<RemixIcon icon="ri-refresh-line" size="small" />} onClick={loadPlatforms}>
               刷新
             </Button>
           </Stack>
@@ -212,14 +209,14 @@ export default function PlatformsPage() {
                             size="small"
                           />
                           <IconButton size="small" onClick={() => handleEdit(platform)}>
-                            <EditIcon fontSize="small" />
+                            <RemixIcon icon="ri-edit-line" size="small" />
                           </IconButton>
                           <IconButton
                             size="small"
                             onClick={() => handleDelete(platform)}
                             color="error"
                           >
-                            <DeleteIcon fontSize="small" />
+                            <RemixIcon icon="ri-delete-bin-line" size="small" />
                           </IconButton>
                         </Stack>
                       </TableCell>

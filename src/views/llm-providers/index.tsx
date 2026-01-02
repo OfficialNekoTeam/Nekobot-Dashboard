@@ -45,12 +45,8 @@ import {
 } from 'api';
 import type { LLMProvider, ProviderType } from 'types/llm';
 
-// assets
-import RefreshIcon from '@mui/icons-material/Refresh';
-import AddIcon from '@mui/icons-material/Add';
-import DeleteIcon from '@mui/icons-material/Delete';
-import EditIcon from '@mui/icons-material/Edit';
-import ContentCopyIcon from '@mui/icons-material/ContentCopy';
+// project imports
+import RemixIcon from 'ui-component/RemixIcon';
 
 // ==============================|| LLM PROVIDERS PAGE ||============================== //
 
@@ -200,10 +196,10 @@ export default function LLMProvidersPage() {
             LLM 服务商
           </Typography>
           <Stack direction="row" spacing={2}>
-            <Button variant="contained" startIcon={<AddIcon />} onClick={handleAdd}>
+            <Button variant="contained" startIcon={<RemixIcon icon="ri-add-line" size="small" />} onClick={handleAdd}>
               添加服务商
             </Button>
-            <Button variant="outlined" startIcon={<RefreshIcon />} onClick={loadData}>
+            <Button variant="outlined" startIcon={<RemixIcon icon="ri-refresh-line" size="small" />} onClick={loadData}>
               刷新
             </Button>
           </Stack>
@@ -315,14 +311,14 @@ export default function LLMProvidersPage() {
                             size="small"
                           />
                           <IconButton size="small" onClick={() => handleEdit(provider)}>
-                            <EditIcon fontSize="small" />
+                            <RemixIcon icon="ri-edit-line" size="small" />
                           </IconButton>
                           <IconButton
                             size="small"
                             onClick={() => handleDelete(provider)}
                             color="error"
                           >
-                            <DeleteIcon fontSize="small" />
+                            <RemixIcon icon="ri-delete-bin-line" size="small" />
                           </IconButton>
                         </Stack>
                       </TableCell>

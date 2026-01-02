@@ -25,7 +25,7 @@ import useConfig from 'hooks/useConfig';
 import useMenuCollapse from 'hooks/useMenuCollapse';
 
 // assets
-import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
+import RemixIcon from 'ui-component/RemixIcon';
 
 export default function NavCollapse({ menu, level, parentId, setSelectedID }: any) {
   const theme = useTheme();
@@ -114,27 +114,20 @@ export default function NavCollapse({ menu, level, parentId, setSelectedID }: an
 
   // 使用 remixicon 图标
   const menuIcon = menu.icon ? (
-    <Box
-      sx={{
-        fontSize: drawerOpen ? '20px' : '24px',
-      }}
-      className={menu.icon}
-    />
+    <RemixIcon icon={menu.icon} size={drawerOpen ? 20 : 24} />
   ) : (
-    <FiberManualRecordIcon
-      sx={{
-        width: isSelected ? 8 : 6,
-        height: isSelected ? 8 : 6
-      }}
-      fontSize={level > 0 ? 'inherit' : 'medium'}
+    <RemixIcon
+      icon="ri-checkbox-blank-circle-fill"
+      size={isSelected ? 8 : 6}
+      sx={{ color: isSelected ? 'secondary.main' : 'text.primary' }}
     />
   );
 
   // 使用 remixicon 折叠图标
   const collapseIcon = drawerOpen ? (
-    <Box className="ri-arrow-up-s-line" sx={{ fontSize: '16px', mt: 'auto', mb: 'auto' }} />
+    <RemixIcon icon="ri-arrow-up-s-line" size={16} />
   ) : (
-    <Box className="ri-arrow-right-s-line" sx={{ fontSize: '16px', mt: 'auto', mb: 'auto' }} />
+    <RemixIcon icon="ri-arrow-right-s-line" size={16} />
   );
 
   return (

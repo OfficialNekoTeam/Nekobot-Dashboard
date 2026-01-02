@@ -36,11 +36,8 @@ import {
 } from 'api/tool-prompt';
 import type { ToolPrompt } from 'api/tool-prompt';
 
-// assets
-import RefreshIcon from '@mui/icons-material/Refresh';
-import AddIcon from '@mui/icons-material/Add';
-import DeleteIcon from '@mui/icons-material/Delete';
-import EditIcon from '@mui/icons-material/Edit';
+// project imports
+import RemixIcon from 'ui-component/RemixIcon';
 
 // ==============================|| TOOL PROMPTS PAGE ||============================== //
 
@@ -140,10 +137,10 @@ export default function ToolPromptsPage() {
             工具提示词
           </Typography>
           <Stack direction="row" spacing={2}>
-            <Button variant="contained" startIcon={<AddIcon />} onClick={handleAdd}>
+            <Button variant="contained" startIcon={<RemixIcon icon="ri-add-line" size="small" />} onClick={handleAdd}>
               创建提示词
             </Button>
-            <Button variant="outlined" startIcon={<RefreshIcon />} onClick={loadData}>
+            <Button variant="outlined" startIcon={<RemixIcon icon="ri-refresh-line" size="small" />} onClick={loadData}>
               刷新
             </Button>
           </Stack>
@@ -201,14 +198,14 @@ export default function ToolPromptsPage() {
                       <TableCell align="right">
                         <Stack direction="row" spacing={1} justifyContent="flex-end">
                           <IconButton size="small" onClick={() => handleEdit(item)}>
-                            <EditIcon fontSize="small" />
+                            <RemixIcon icon="ri-edit-line" size="small" />
                           </IconButton>
                           <IconButton
                             size="small"
                             onClick={() => handleDelete(item)}
                             color="error"
                           >
-                            <DeleteIcon fontSize="small" />
+                            <RemixIcon icon="ri-delete-bin-line" size="small" />
                           </IconButton>
                         </Stack>
                       </TableCell>

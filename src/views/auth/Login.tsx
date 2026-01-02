@@ -4,17 +4,13 @@
 
 import { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { flushSync } from 'react-dom';
 
 // material-ui
 import {
   Box,
   Button,
   Card,
-  CardContent,
-  CardMedia,
   Checkbox,
-  Divider,
   FormControl,
   FormControlLabel,
   FormHelperText,
@@ -25,16 +21,14 @@ import {
   OutlinedInput,
   Stack,
   Typography,
+  Container,
 } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 
 // project imports
 import { useAuth } from '../../contexts/AuthContext';
 import AnimateButton from '../../ui-component/extended/AnimateButton';
-
-// assets
-import VisibilityIcon from '@mui/icons-material/Visibility';
-import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import RemixIcon from '../../ui-component/RemixIcon';
 
 // ==============================|| LOGIN PAGE ||============================== //
 
@@ -120,110 +114,175 @@ export default function LoginPage() {
         alignItems: 'center',
         justifyContent: 'center',
         bgcolor: theme.palette.background.default,
-        p: 2,
+        position: 'relative',
       }}
     >
-      <Grid container sx={{ justifyContent: 'center' }}>
-        <Grid size={{ xs: 12, sm: 10, md: 8, lg: 6, xl: 4 }}>
-          <Card>
-            <Box
+      <Container
+        maxWidth="sm"
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+      >
+        <Card
+          sx={{
+            width: '470px',
+            minHeight: '503px',
+            boxShadow: theme.shadows[4],
+            borderRadius: 2,
+            display: 'flex',
+            flexDirection: 'column',
+          }}
+          elevation={8}
+        >
+          <Box
+            sx={{
+              p: 4,
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              flexGrow: 1,
+            }}
+          >
+            {/* 标题 */}
+            <Typography
+              variant="h3"
               sx={{
-                p: 4,
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
+                mb: 0.5,
+                fontWeight: 600,
+                color: 'primary.main',
               }}
             >
-              <Typography variant="h3" sx={{ mb: 1, fontWeight: 600 }}>
-                NekoBot Dashboard
-              </Typography>
-              <Typography variant="body2" sx={{ mb: 4, color: 'text.secondary' }}>
-                登录以访问管理面板
-              </Typography>
+              NekoBot Dashboard
+            </Typography>
+            <Typography
+              variant="body2"
+              sx={{
+                mb: 4,
+                color: 'text.secondary',
+              }}
+            >
+              登录以访问管理面板
+            </Typography>
 
-              <Box component="form" onSubmit={handleSubmit} sx={{ width: '100%' }}>
-                <FormControl fullWidth error={!!errors.username} sx={{ mb: 3 }}>
-                  <InputLabel htmlFor="username">用户名</InputLabel>
-                  <OutlinedInput
-                    id="username"
-                    name="username"
-                    value={formData.username}
-                    onChange={handleChange}
-                    label="用户名"
-                    placeholder="请输入用户名"
-                    autoComplete="username"
-                    autoFocus
-                  />
-                  {errors.username && <FormHelperText>{errors.username}</FormHelperText>}
-                </FormControl>
+            {/* 登录表单 */}
+            <Box component="form" onSubmit={handleSubmit} sx={{ width: '100%' }}>
+              {/* 用户名输入框 */}
+              <FormControl fullWidth error={!!errors.username} sx={{ mb: 3 }}>
+                <InputLabel htmlFor="username">用户名</InputLabel>
+                <OutlinedInput
+                  id="username"
+                  name="username"
+                  value={formData.username}
+                  onChange={handleChange}
+                  label="用户名"
+                  placeholder="请输入用户名"
+                  autoComplete="username"
+                  autoFocus
+                />
+                {errors.username && <FormHelperText>{errors.username}</FormHelperText>}
+              </FormControl>
 
-                <FormControl fullWidth error={!!errors.password} sx={{ mb: 3 }}>
-                  <InputLabel htmlFor="password">密码</InputLabel>
-                  <OutlinedInput
-                    id="password"
-                    name="password"
-                    type={showPassword ? 'text' : 'password'}
-                    value={formData.password}
-                    onChange={handleChange}
-                    endAdornment={
-                      <InputAdornment position="end">
-                        <IconButton
-                          aria-label="toggle password visibility"
-                          onClick={handleClickShowPassword}
-                          onMouseDown={handleMouseDownPassword}
-                          edge="end"
-                          size="large"
-                        >
-                          {showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
-                        </IconButton>
-                      </InputAdornment>
-                    }
-                    label="密码"
-                    placeholder="请输入密码"
-                    autoComplete="current-password"
-                  />
-                  {errors.password && <FormHelperText>{errors.password}</FormHelperText>}
-                </FormControl>
+              {/* 密码输入框 */}
+              <FormControl fullWidth error={!!errors.password} sx={{ mb: 2 }}>
+                <InputLabel htmlFor="password">密码</InputLabel>
+                <OutlinedInput
+                  id="password"
+                  name="password"
+                  type={showPassword ? 'text' : 'password'}
+                  value={formData.password}
+                  onChange={handleChange}
+                  endAdornment={
+                    <InputAdornment position="end">
+                      <IconButton
+                        aria-label="toggle password visibility"
+                        onClick={handleClickShowPassword}
+                        onMouseDown={handleMouseDownPassword}
+                        edge="end"
+                        size="small"
+                      >
+                        {showPassword ? <RemixIcon icon="ri-eye-line" size="small" /> : <RemixIcon icon="ri-eye-off-line" size="small" />}
+                      </IconButton>
+                    </InputAdornment>
+                  }
+                  label="密码"
+                  placeholder="请输入密码"
+                  autoComplete="current-password"
+                />
+                {errors.password && <FormHelperText>{errors.password}</FormHelperText>}
+              </FormControl>
 
-                <Stack direction="row" sx={{ mb: 3, alignItems: 'center', justifyContent: 'space-between' }}>
-                  <FormControlLabel
-                    control={<Checkbox defaultChecked />}
-                    label="记住我"
-                  />
-                </Stack>
+              {/* 记住我 */}
+              <Stack direction="row" sx={{ mb: 3, alignItems: 'center', justifyContent: 'space-between' }}>
+                <FormControlLabel
+                  control={<Checkbox defaultChecked size="small" />}
+                  label="记住我"
+                  sx={{ '& .MuiFormControlLabel-label': { fontSize: '0.875rem' } }}
+                />
+              </Stack>
 
-                {errors.submit && (
-                  <Typography color="error" variant="body2" sx={{ mb: 2 }}>
+              {/* 错误提示 */}
+              {errors.submit && (
+                <Box
+                  sx={{
+                    mb: 2,
+                    p: 1.5,
+                    bgcolor: 'error.light',
+                    borderRadius: 1,
+                    border: '1px solid',
+                    borderColor: 'error.main',
+                  }}
+                >
+                  <Typography color="error.dark" variant="body2" sx={{ fontWeight: 500 }}>
                     {errors.submit}
                   </Typography>
-                )}
-
-                <Box sx={{ mt: 2 }}>
-                  <AnimateButton>
-                    <Button
-                      disableElevation
-                      disabled={isSubmitting}
-                      fullWidth
-                      size="large"
-                      type="submit"
-                      variant="contained"
-                      color="primary"
-                    >
-                      {isSubmitting ? '登录中...' : '登录'}
-                    </Button>
-                  </AnimateButton>
                 </Box>
-              </Box>
+              )}
 
-              <Divider sx={{ my: 3 }} />
-
-              <Typography variant="caption" sx={{ color: 'text.secondary' }}>
-                NekoBot Team © 2024
-              </Typography>
+              {/* 登录按钮 */}
+              <AnimateButton>
+                <Button
+                  disableElevation
+                  disabled={isSubmitting}
+                  fullWidth
+                  size="large"
+                  type="submit"
+                  variant="contained"
+                  color="primary"
+                  sx={{
+                    py: 1.5,
+                    fontSize: '1rem',
+                    fontWeight: 600,
+                  }}
+                >
+                  {isSubmitting ? '登录中...' : '登录'}
+                </Button>
+              </AnimateButton>
             </Box>
-          </Card>
-        </Grid>
-      </Grid>
+
+            {/* 分隔线 */}
+            <Box
+              sx={{
+                width: '100%',
+                my: 3,
+                borderTop: `1px solid ${theme.palette.divider}`,
+              }}
+            />
+
+            {/* 页脚 */}
+            <Typography
+              variant="caption"
+              sx={{
+                color: 'text.secondary',
+                textAlign: 'center',
+              }}
+            >
+              NekoBot Team © 2024
+            </Typography>
+          </Box>
+        </Card>
+      </Container>
     </Box>
   );
 }

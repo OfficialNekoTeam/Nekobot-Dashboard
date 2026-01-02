@@ -8,6 +8,7 @@ import { ConfigProvider } from './contexts/ConfigContext';
 
 // style + assets
 import 'assets/scss/style.scss';
+import 'remixicon/fonts/remixicon.css';
 
 // google-fonts
 import '@fontsource/roboto/400.css';
