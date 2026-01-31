@@ -249,4 +249,4 @@ MIT License
 
 ## 联系方式
 
-项目地址: https://github.com/NekoBotTeam/nekobot-dashboard
+项目地址: https://github.com/OfficialNekoTeam/Nekobot-Dashboard
